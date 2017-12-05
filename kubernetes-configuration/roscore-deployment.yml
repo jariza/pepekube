@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: roscore
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: roscore
+    spec:
+      containers:
+      - name: roscore-server
+        image: jariza/roscore:2
+        ports:
+        - name: rosmaster
+          containerPort: 11311
+        readinessProbe:
+          tcpSocket:
+            port: 11311
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 11311
+          initialDelaySeconds: 10
+          periodSeconds: 10

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: houseapi
+spec:
+  selector:
+    app: houseapi
+  ports:
+  - protocol: TCP
+    port: 31500
+    targetPort: houseapi

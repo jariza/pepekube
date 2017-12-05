@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: houseapi
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: houseapi
+    spec:
+      containers:
+      - name: houseapi
+        image: jariza/houseapi:1.0
+        env:
+        - name: ROS_MASTER_URI
+          value: "http://roscore-service.default.svc.cluster.local:31313"
+        ports:
+        - name: houseapi
+          containerPort: 5000
+        readinessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 10

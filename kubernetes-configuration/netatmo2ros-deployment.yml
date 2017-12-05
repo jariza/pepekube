@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: netatmo2ros
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: netatmo2ros
+    spec:
+      containers:
+      - name: netatmo2ros
+        image: jariza/netatmo2ros:1.2
+        env:
+        - name: ROS_MASTER_URI
+          value: "http://roscore-service.default.svc.cluster.local:31313"
+        volumeMounts:
+        - name: secrets-volume
+          mountPath: "/config"
+      volumes:
+      - name: secrets-volume
+        secret:
+          secretName: netatmo2ros-secrets
+          items:
+          - key: username
+            path: username
+          - key: password
+            path: password
+          - key: client_id
+            path: client_id
+          - key: client_secret
+            path: client_secret
+          - key: device_id
+            path: device_id
+

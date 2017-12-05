@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: roscore-service
+spec:
+  selector:
+    app: roscore
+  ports:
+  - protocol: TCP
+    port: 31313
+    targetPort: rosmaster
