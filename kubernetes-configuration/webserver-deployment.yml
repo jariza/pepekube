@@ -31,4 +31,4 @@ spec:
       volumes:
       - name: php-volume
         awsElasticBlockStore:
-          volumeID: vol-0879af4c4c52532d7
+          volumeID: VOLUME-ID
