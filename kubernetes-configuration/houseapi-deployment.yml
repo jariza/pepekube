@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: houseapi
-        image: jariza/houseapi:1.0
+        image: jariza/houseapi:1.1
         env:
         - name: ROS_MASTER_URI
           value: "http://roscore-service.default.svc.cluster.local:31313"
