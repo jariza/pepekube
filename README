@@ -4,7 +4,5 @@ Here you can find two folders...
 - roscore, a docker image with a roscore (yup).
 - kubernetes-configuration, all the required files for deploying the system in Kubernetes.
 
-This system is currently working in http://pepekube.net
-
 == WHY I DID THIS ==
 I wanted to learn Kubernetes, and remember ROS (you know, feelings).
